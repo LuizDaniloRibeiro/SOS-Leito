@@ -34,7 +34,7 @@ const response = [
         },
         title: 'Hospital Evangélico de Sorocaba',
         description: 'Sorocaba',
-        category: 1,
+        category: 2,
         icon: require('../../assets/locationYellow.png'),
       },
       {
@@ -45,7 +45,7 @@ const response = [
         },
         title: 'Santa Casa de Misericórdia de Sorocaba',
         description: 'Sorocaba',
-        category: 1,
+        category: 3,
         icon: require('../../assets/locationBlue.png'),
       },
       {
@@ -56,8 +56,19 @@ const response = [
         },
         title: 'Mental Medicina Especializada',
         description: 'Sorocaba',
-        category: 1,
+        category: 4,
         icon: require('../../assets/locationBlue.png'),
+      },
+      {
+        id: '6',
+        coordinates: {
+          latitude: -23.501101500175239,  
+          longitude: -47.474808974884584,
+        },
+        title: 'Hospital',
+        description: 'Sorocaba',
+        category: 5,
+        icon: require('../../assets/locationBlack.png'),
       },
       
 ]
@@ -65,8 +76,6 @@ const response = [
 const Map = () => {
     return (
         <>
-            
-
             <MapView
             style={styles.map}
             loadingEnabled={true}
