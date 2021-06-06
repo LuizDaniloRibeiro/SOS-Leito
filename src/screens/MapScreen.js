@@ -14,7 +14,8 @@ const MapScreen = ({ navigation }) => {
 
 MapScreen.navigationOptions = {
       tabBarIcon: ({ tintColor }) => (
-        <FontAwesome5 name="map-marked" color={ tintColor } size={ 30 } />
+        <FontAwesome5 name="hospital-user" color={ tintColor } size={ 30 } />
+        
       )
     }
 

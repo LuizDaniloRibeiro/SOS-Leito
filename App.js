@@ -8,7 +8,7 @@ import { setNavigator } from './src/screens/navigationRef'
 
     const switchNavigator = createSwitchNavigator({
       mainFlow: createBottomTabNavigator({
-        Mapa: MapScreen,
+        Hospital: MapScreen,
         
       }, {
         tabBarOptions: {
