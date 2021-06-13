@@ -1,8 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import MapView from 'react-native-maps'
-import { StyleSheet, Dimensions, Image } from 'react-native'
+import { 
+  StyleSheet, 
+  Dimensions, 
+  Image, 
+  View, 
+  Text, 
+  TouchableWithoutFeedback, 
+  TouchableNativeFeedback
+} from 'react-native'
     
 const height = Dimensions.get('window').height
+const width = Dimensions.get('window').width
     
 const response = [
       {
@@ -46,7 +55,7 @@ const response = [
         title: 'Santa Casa de Misericórdia de Sorocaba',
         description: 'Sorocaba',
         category: 3,
-        icon: require('../../assets/locationBlue.png'),
+        icon: require('../../assets/locationYellow.png'),
       },
       {
         id: '5',
@@ -57,23 +66,48 @@ const response = [
         title: 'Mental Medicina Especializada',
         description: 'Sorocaba',
         category: 4,
-        icon: require('../../assets/locationBlue.png'),
+        icon: require('../../assets/locationRed.png'),
       },
       {
         id: '6',
         coordinates: {
-          latitude: -23.501101500175239,  
-          longitude: -47.474808974884584,
+          latitude: -23.501101509711990,  
+          longitude: -47.474808954445776,
         },
-        title: 'Hospital',
+        title: 'Mental Medicina Especializada',
         description: 'Sorocaba',
-        category: 5,
-        icon: require('../../assets/locationBlack.png'),
+        category: 4,
+        icon: require('../../assets/locationBlue.png'),
       },
+      {
+        id: '7',
+        coordinates: {
+          latitude: -23.501101500175228,  
+          longitude: -47.474808974884574,
+        },
+        title: 'Mental Medicina Especializada',
+        description: 'Sorocaba',
+        category: 4,
+        icon: require('../../assets/locationYellow.png'),
+      },
+      {
+        id: '8',
+        coordinates: {
+          latitude: -23.5011014879542,  
+          longitude: -47.474808974884574,
+        },
+        title: 'Mental Medicina Especializada',
+        description: 'Sorocaba',
+        category: 4,
+        icon: require('../../assets/locationRed.png'),
+      },
+      
       
 ]
     
 const Map = () => {
+  const [spot, setSpot] =  useState(null)
+  const [visible, setVisible] = useState(false)
     return (
         <>
             <MapView
@@ -85,19 +119,46 @@ const Map = () => {
                 latitudeDelta: 0,
                 longitudeDelta: 0.050
             }}
+
+            onPress={( event ) => {
+              setVisible(false)
+            }}
+
             >
             {response.map(marker => (
                 <MapView.Marker
                 key={marker.id}
+                identifier={marker.id}
                 coordinate={marker.coordinates}
                 title={marker.title}
                 description={marker.description}
+                showUserLocation={true}
+                onPress={(event) => {
+                  setSpot(event._targetInst.return.key)
+                  setVisible(true)
+                }}
                 imagem={marker.imagem} style={{ height: 32, width: 32 }}
                 >
                 <Image source={ marker.icon } style={{ height: 32, width: 32 }} />
                 </MapView.Marker>
             ))}
             </MapView>
+
+            { 
+              spot && visible ? (
+                <TouchableNativeFeedback onPress={() => {
+                  setVisible(true)
+                }}>
+                  <View style={ styles.card }>
+                    <Image source={ require('../../assets/hospital-santa-casa.jpeg')} style={ styles.img }/>
+                    <Text style={ styles.descricaoTitulo }>Santa Casa de Misericórdia de Sorocaba</Text>
+                    <Text style={ styles.descricao }>Telefone: (15) 2101-8000</Text>
+                    <Text style={ styles.descricao }>Endereço: Av. São Paulo, 750 - Jardim Árvore Grande, Sorocaba - SP, 18013-000</Text>
+                    <Text style={ styles.descricao }>Horario: aberto 24 horas</Text>
+                  </View>
+                </TouchableNativeFeedback>
+              ) : <View />  
+            }
 
         </>
     )
@@ -106,6 +167,34 @@ const Map = () => {
 const styles = StyleSheet.create({
     map: {
         height
+    },
+    card: {
+      backgroundColor: '#fff',
+      height: 250,
+      width: width - 20,
+      position: 'absolute',
+      overflow: 'hidden',
+      margin: 10,
+      bottom: 50,
+      shadowRadius: 20,
+      borderRadius: 8,
+      elevation: 20
+    },
+    img: {
+      width: 200,
+      height: 100,
+      marginLeft: 100,
+      marginBottom: 10,
+      marginTop: 20
+    },
+    descricao: {
+      textAlign: 'center',
+      fontSize: 13
+    },
+    descricaoTitulo: {
+      fontWeight: 'bold',
+      fontSize: 15,
+      textAlign: 'center',
     }
 })
     

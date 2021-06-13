@@ -24,8 +24,8 @@ mapListFlow.navigationOptions = {
 
 const switchNavigator = createSwitchNavigator({
    mainFlow: createBottomTabNavigator({
-     Mapa: MapScreen,
-     mapListFlow
+     Hospitais: MapScreen,
+    //  mapListFlow
         
    },{
      tabBarOptions: {
