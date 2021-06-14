@@ -22,7 +22,7 @@ const response = [
         },
         title: 'Hospital Santa Lucinda de Sorocaba Casa',
         description: 'Sorocaba',
-        icon: require('../../assets/locationRed.png'),
+        icon: require('../../assets/locationYellow.png'),
       },
       {
         id: '2',
@@ -55,7 +55,7 @@ const response = [
         title: 'Santa Casa de Misericórdia de Sorocaba',
         description: 'Sorocaba',
         category: 3,
-        icon: require('../../assets/locationYellow.png'),
+        icon: require('../../assets/locationRed.png'),
       },
       {
         id: '5',
@@ -66,7 +66,7 @@ const response = [
         title: 'Mental Medicina Especializada',
         description: 'Sorocaba',
         category: 4,
-        icon: require('../../assets/locationRed.png'),
+        icon: require('../../assets/locationYellow.png'),
       },
       {
         id: '6',
@@ -147,14 +147,16 @@ const Map = () => {
             { 
               spot && visible ? (
                 <TouchableNativeFeedback onPress={() => {
-                  setVisible(true)
+                    setVisible(true)
                 }}>
                   <View style={ styles.card }>
                     <Image source={ require('../../assets/hospital-santa-casa.jpeg')} style={ styles.img }/>
+                    <Text style={ styles.descricaoTitulo }>HOSPITAL PUBLICO</Text>
                     <Text style={ styles.descricaoTitulo }>Santa Casa de Misericórdia de Sorocaba</Text>
                     <Text style={ styles.descricao }>Telefone: (15) 2101-8000</Text>
-                    <Text style={ styles.descricao }>Endereço: Av. São Paulo, 750 - Jardim Árvore Grande, Sorocaba - SP, 18013-000</Text>
-                    <Text style={ styles.descricao }>Horario: aberto 24 horas</Text>
+                    <Text style={ styles.descricao }>Av. São Paulo, 750 - Jardim Árvore Grande, Sorocaba - SP, 18013-000</Text>
+                    <Text style={ styles.descricao }>Total de leitos: 20</Text>
+                    <Text style={ styles.descricao }>Leitos disponiveis: 2</Text>
                   </View>
                 </TouchableNativeFeedback>
               ) : <View />  
@@ -169,7 +171,7 @@ const styles = StyleSheet.create({
         height
     },
     card: {
-      backgroundColor: '#fff',
+      backgroundColor: '#D04627',
       height: 250,
       width: width - 20,
       position: 'absolute',
@@ -185,16 +187,19 @@ const styles = StyleSheet.create({
       height: 100,
       marginLeft: 100,
       marginBottom: 10,
-      marginTop: 20
+      marginTop: 15,
+      borderRadius: 10
     },
     descricao: {
       textAlign: 'center',
-      fontSize: 13
+      fontSize: 12,
+      color: '#fff'
     },
     descricaoTitulo: {
       fontWeight: 'bold',
-      fontSize: 15,
+      fontSize: 14,
       textAlign: 'center',
+      color: '#fff'
     }
 })
     

@@ -12,7 +12,7 @@ import { FontAwesome5 } from '@expo/vector-icons'
 
 
 const mapListFlow = createStackNavigator({
-  Hospital: HospList,
+  SOSLeito: HospList,
   MapDetalhe: MapDetailScreen
 })
 
@@ -24,13 +24,14 @@ mapListFlow.navigationOptions = {
 
 const switchNavigator = createSwitchNavigator({
    mainFlow: createBottomTabNavigator({
-     Hospitais: MapScreen,
+      SOSLeito: MapScreen,
     //  mapListFlow
         
    },{
      tabBarOptions: {
         showLabel: true,
-        activeTintColor: '#2905FF'
+        activeTintColor: '#fff',
+        activeBackgroundColor: '#52A0CC'
     }
    })
 })
